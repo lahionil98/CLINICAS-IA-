@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Clínicas-IA™ · Clínica Premium</title>
+<link rel="stylesheet" href="styles.css"/>
+<script defer src="app.js"></script>
+</head>
+<body class="">
+<header class="navbar">
+  <div class="brand">
+    <img src="assets/logo-rose-gold.svg" class="logo"/>
+    <div class="brand-text">
+      <span class="brand-title">Clínicas-IA™</span>
+      <span class="brand-sub">Automatización con IA para clínicas</span>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Premium</a>
+    <a href="lujo-dark.html">Lujo</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+</header>
+
+<section class="hero-video">
+  <video autoplay muted loop playsinline>
+    <source src="https://videos.pexels.com/video-files/6203092/6203092-sd_640_360_25fps.mp4" type="video/mp4">
+  </video>
+  <div class="overlay">
+    <p class="eyebrow">Para clínicas que quieren dejar de perder pacientes</p>
+    <h1>Agenda llena, equipo relajado y pacientes mejor atendidos.</h1>
+    <p>Implementamos un sistema de IA que responde WhatsApp, agenda turnos, hace seguimiento y te muestra qué canal trae pacientes reales.</p>
+    <div class="hero-actions">
+      <a href="#planes" class="btn">Ver planes</a>
+      <a href="#form" class="btn btn-ghost">Quiero una demo</a>
+    </div>
+    <p class="small-note">Implementación en 7 días · Sin cambiar tu sistema actual · Acompañamiento 1 a 1</p>
+  </div>
+</section>
+
+<section class="benefits">
+  <h2>Lo que pasa cuando activás Clínicas-IA™</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>+ Turnos confirmados</h3>
+      <p>Mensajes inteligentes y recordatorios automáticos que recuperan pacientes distraídos.</p>
+    </div>
+    <div class="card">
+      <h3>- Tiempo en WhatsApp</h3>
+      <p>La IA responde las dudas frecuentes y solo deriva al equipo los casos importantes.</p>
+    </div>
+    <div class="card">
+      <h3>Agenda ordenada</h3>
+      <p>Visibilidad por profesional, tratamiento y canal de origen del paciente.</p>
+    </div>
+    <div class="card">
+      <h3>Pacientes mejor cuidados</h3>
+      <p>Seguimiento post-tratamiento y reactivación automática de ex pacientes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="planes" class="pricing">
+  <h2>Planes pensados para crecer, no para complicarte</h2>
+  <div class="grid pricing-grid">
+    <div class="card price-card">
+      <h3>Inicio</h3>
+      <p class="price">$49.900 / mes</p>
+      <ul>
+        <li>Chat IA básico para WhatsApp</li>
+        <li>Agenda + recordatorios</li>
+        <li>Soporte por WhatsApp</li>
+      </ul>
+      <a class="btn btn-full" href="#form">Quiero empezar</a>
+    </div>
+
+    <div class="card price-card highlight">
+      <h3>Crecimiento</h3>
+      <p class="price">$89.900 / mes</p>
+      <ul>
+        <li>IA avanzada entrenada en tu clínica</li>
+        <li>Automatización de seguimiento y reactivación</li>
+        <li>Dashboard con métricas clave</li>
+      </ul>
+      <a class="btn btn-full" href="#form">Plan recomendado</a>
+      <span class="tag-popular">Más elegido</span>
+    </div>
+
+    <div class="card price-card">
+      <h3>Premium</h3>
+      <p class="price">$129.900 / mes</p>
+      <ul>
+        <li>Todo lo anterior + flujos a medida</li>
+        <li>Integraciones con CRM y campañas</li>
+        <li>Acompañamiento 1 a 1 con nuestro equipo</li>
+      </ul>
+      <a class="btn btn-full" href="#form">Hablar con un especialista</a>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2>Clínicas que ya delegaron el caos a la IA</h2>
+  <div class="grid">
+    <div class="card">
+      <p>“Antes perdíamos mensajes y turnos todos los días. Hoy la agenda está siempre llena y el equipo llega a todo.”</p>
+      <span class="test-name">Clínica Estética Nova · Buenos Aires</span>
+    </div>
+    <div class="card">
+      <p>“La IA responde el 80% de las consultas y nos deja tiempo para lo importante: atender bien al paciente.”</p>
+      <span class="test-name">Centro Odontológico Integral · Córdoba</span>
+    </div>
+    <div class="card">
+      <p>“En 60 días reducimos las ausencias y aumentamos los tratamientos de alto valor. Es otra clínica.”</p>
+      <span class="test-name">Policonsultorios Salud Plena · Rosario</span>
+    </div>
+  </div>
+</section>
+
+<section id="form" class="form-section">
+  <h2>Contanos sobre tu clínica y te mostramos un plan concreto</h2>
+  <p class="section-sub">Sin compromiso, sin tecnicismos. Te mostramos cómo se vería tu clínica con IA.</p>
+  <form name="contacto-premium" method="POST" data-netlify="true" class="contact-form">
+    <input type="hidden" name="form-name" value="contacto-premium" />
+    <div class="form-grid">
+      <input name="nombre" placeholder="Nombre y apellido" required/>
+      <input name="whatsapp" placeholder="WhatsApp" required/>
+      <select name="tipo">
+        <option value="estetica">Clínica estética</option>
+        <option value="dental">Clínica dental</option>
+        <option value="medica">Clínica médica / policonsultorio</option>
+      </select>
+      <textarea name="desafio" rows="3" placeholder="Ej: muchos turnos vacíos, caos de WhatsApp, etc." required></textarea>
+    </div>
+    <button class="btn btn-full" type="submit">Quiero mi diagnóstico</button>
+  </form>
+</section>
+
+<section class="ai-chat">
+  <h2>Probá el asistente IA ahora mismo</h2>
+  <div class="chat-box">
+    <div id="chat-messages" class="chat-messages">
+      <div class="message bot">Hola 👋 Soy la IA de Clínicas-IA. Contame qué pasa hoy en tu clínica.</div>
+    </div>
+    <form id="chat-form">
+      <input id="chat-input" placeholder="Ej: Tenemos muchos turnos que no se presentan..." required/>
+      <button type="submit">Enviar</button>
+    </form>
+    <p class="chat-note">Este chat se conecta por detrás a la API de OpenAI mediante una Function de Netlify.</p>
+  </div>
+</section>
+
+<footer class="footer">© 2025 Clínicas-IA™ · IA aplicada a tu clínica</footer>
+</body>
+</html>

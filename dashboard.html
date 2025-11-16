@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Clínicas-IA™ · Dashboard</title>
+<link rel="stylesheet" href="styles.css"/>
+<script defer src="app.js"></script>
+</head>
+<body class="">
+<header class="navbar">
+  <div class="brand">
+    <img src="assets/logo-rose-gold.svg" class="logo"/>
+    <div class="brand-text">
+      <span class="brand-title">Clínicas-IA™</span>
+      <span class="brand-sub">Automatización con IA para clínicas</span>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Premium</a>
+    <a href="lujo-dark.html">Lujo</a>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
+</header>
+
+<section class="dashboard">
+  <h1>Dashboard de tu clínica</h1>
+  <p class="section-sub">Visualizá en un solo lugar lo que la IA está haciendo por tu clínica.</p>
+
+  <div class="grid">
+    <div class="card kpi">
+      <h3>Turnos agendados este mes</h3>
+      <p class="kpi-number">312</p>
+      <p class="kpi-sub">+24% vs mes anterior</p>
+    </div>
+    <div class="card kpi">
+      <h3>Pacientes nuevos</h3>
+      <p class="kpi-number">128</p>
+      <p class="kpi-sub">63% llegaron por WhatsApp</p>
+    </div>
+    <div class="card kpi">
+      <h3>Porcentaje de ausencias</h3>
+      <p class="kpi-number">6.8%</p>
+      <p class="kpi-sub">Meta: &lt; 10%</p>
+    </div>
+    <div class="card kpi">
+      <h3>Consultas atendidas por IA</h3>
+      <p class="kpi-number">81%</p>
+      <p class="kpi-sub">El equipo responde solo casos complejos.</p>
+    </div>
+  </div>
+
+  <div class="card chart-card">
+    <h3>Producción por tipo de tratamiento</h3>
+    <div class="chart-bars" id="chart-bars">
+      <!-- JS ajusta el ancho por data-value -->
+      <div class="bar-row">
+        <span>Estética facial</span>
+        <div class="bar" data-value="34"></div>
+        <span class="bar-label">34%</span>
+      </div>
+      <div class="bar-row">
+        <span>Corporal</span>
+        <div class="bar" data-value="22"></div>
+        <span class="bar-label">22%</span>
+      </div>
+      <div class="bar-row">
+        <span>Odontología estética</span>
+        <div class="bar" data-value="18"></div>
+        <span class="bar-label">18%</span>
+      </div>
+      <div class="bar-row">
+        <span>Clínica general</span>
+        <div class="bar" data-value="26"></div>
+        <span class="bar-label">26%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">© 2025 Clínicas-IA™ · IA aplicada a tu clínica</footer>
+</body>
+</html>
