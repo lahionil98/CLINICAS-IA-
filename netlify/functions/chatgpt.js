@@ -1,6 +1,4 @@
-import OpenAI from "openai";
-
-export const handler = async (event) => {
+exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -10,25 +8,38 @@ export const handler = async (event) => {
 
   try {
     const { message } = JSON.parse(event.body);
-    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-    const completion = await client.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        { role: "system", content: "Sos una IA experta en automatización de clínicas." },
-        { role: "user", content: message }
-      ]
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+          { role: "system", content: "Sos una IA especializada en automatización para clínicas." },
+          { role: "user", content: message }
+        ]
+      })
     });
 
-    const reply = completion.choices[0].message.content;
+    const data = await response.json();
+
+    if (!data.choices) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ reply: "La IA no pudo responder (error en la API)." })
+      };
+    }
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ reply })
+      body: JSON.stringify({ reply: data.choices[0].message.content })
     };
 
   } catch (error) {
-    console.error(error);
+    console.error("ERROR CHATGPT:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Error interno del servidor" })
