@@ -13,10 +13,11 @@ exports.handler = async (event) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+        "OpenAI-Project": process.env.OPENAI_PROJECT_ID
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o-mini",
         messages: [
           { role: "system", content: "Sos una IA especializada en automatización para clínicas." },
           { role: "user", content: message }
@@ -25,21 +26,15 @@ exports.handler = async (event) => {
     });
 
     const data = await response.json();
-
-    if (!data.choices) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ reply: "La IA no pudo responder (error en la API)." })
-      };
-    }
+    const reply = data.choices?.[0]?.message?.content || "La IA no pudo responder (API).";
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ reply: data.choices[0].message.content })
+      body: JSON.stringify({ reply })
     };
 
   } catch (error) {
-    console.error("ERROR CHATGPT:", error);
+    console.error(error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Error interno del servidor" })
