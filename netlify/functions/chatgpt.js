@@ -1,6 +1,6 @@
-const OpenAI = require("openai");
+import OpenAI from "openai";
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -9,34 +9,29 @@ exports.handler = async (event) => {
   }
 
   try {
-    const body = JSON.parse(event.body || "{}");
-
-    const client = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY
-    });
+    const { message } = JSON.parse(event.body);
+    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
     const completion = await client.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
-        { role: "system", content: "Sos una IA especializada en automatización para clínicas." },
-        { role: "user", content: body.message }
+        { role: "system", content: "Sos una IA experta en automatización de clínicas." },
+        { role: "user", content: message }
       ]
     });
 
+    const reply = completion.choices[0].message.content;
+
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        reply: completion.choices[0].message.content
-      })
+      body: JSON.stringify({ reply })
     };
 
   } catch (error) {
-    console.error("ERROR EN FUNCIÓN:", error);
+    console.error(error);
     return {
       statusCode: 500,
-      body: JSON.stringify({
-        error: error.message || "Error interno del servidor"
-      })
+      body: JSON.stringify({ error: "Error interno del servidor" })
     };
   }
 };
