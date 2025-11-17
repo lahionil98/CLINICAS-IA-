@@ -1,4 +1,4 @@
-exports.handler = async (event) => {
+exports.handler = async (event) => { 
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
@@ -9,12 +9,11 @@ exports.handler = async (event) => {
   try {
     const { message } = JSON.parse(event.body);
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch(`https://api.openai.com/v1/projects/${process.env.OPENAI_PROJECT_ID}/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
-        "OpenAI-Project": process.env.OPENAI_PROJECT_ID
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
@@ -26,11 +25,17 @@ exports.handler = async (event) => {
     });
 
     const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content || "La IA no pudo responder (API).";
+
+    if (!data.choices) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ reply: "La IA no pudo responder (API Error)." })
+      };
+    }
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ reply })
+      body: JSON.stringify({ reply: data.choices[0].message.content })
     };
 
   } catch (error) {
