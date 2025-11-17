@@ -14,7 +14,7 @@ exports.handler = async (event) => {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
-        "OpenAI-Project": process.env.OPENAI_PROJECT_ID
+        "OpenAI-Project": process.env.OPENAI_PROJECT_ID    // ← ESTE ERA EL QUE FALTABA
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
